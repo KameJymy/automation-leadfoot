@@ -19,7 +19,6 @@ async function fillForm(session)
         {
             await i.clearValue();
             await i.type(data[id]);
-            console.log(id+" : "+data[id]);
         }
     }
 
@@ -34,7 +33,18 @@ async function fillForm(session)
         {
             await i.clearValue();
             await i.type(data1[id]);
-            console.log(id+" : "+data1[id]);
+        }
+    }
+
+    const select = await session.findByXpath(selectors.type_conge);
+    const options = await select.findAllByTagName("option");
+    for (let o of options)
+    {
+        const value = await o.getAttribute("value");
+        if (value ==="cp")
+        {
+            await o.click();
+            break;
         }
     }
 }
