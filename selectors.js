@@ -4,5 +4,6 @@ module.exports = {
     type_conge :"//form//label/select[@id='type-conge']",
     checkbox :"//form//label/input[@type='checkbox']",
     valider:"button[type='button']",
-    p : "p[id='confirmation-message']"
+    p : "p[id='confirmation-message']",
+    demande :"button"
 };

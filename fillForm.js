@@ -65,6 +65,15 @@ async function fillForm(session)
 
     const msg = await session.findByCssSelector(selectors.p);
     console.log(await msg.getVisibleText());
+
+    const demande = await session.findByCssSelector(selectors.demande);
+    await demande.click();
+        
+    await new Command(session)
+            .then(pollUntil(function(){
+                const element = document.querySelector("#prenom");
+                return element && window.getComputedStyle(element).display !== "none" ? true : null
+            ;}, [], 3000));
 }
 
 module.exports = fillForm;
