@@ -62,6 +62,9 @@ async function fillForm(session)
             const element = document.querySelector("#confirmation-message");
             return element && window.getComputedStyle(element).display !== "none" ? true : null
         ;}, [], 3000));
+
+    const msg = await session.findByCssSelector(selectors.p);
+    console.log(await msg.getVisibleText());
 }
 
 module.exports = fillForm;
