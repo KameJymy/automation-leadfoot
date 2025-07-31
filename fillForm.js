@@ -47,6 +47,12 @@ async function fillForm(session)
             break;
         }
     }
+
+    const certif = await session.findByXpath(selectors.checkbox);
+    await certif.click();
+
+    const valider = await session.findByCssSelector(selectors.valider);
+    await valider.click();
 }
 
 module.exports = fillForm;
