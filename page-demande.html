@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Demande de congés</title>
+</head>
+<body>
+  <h1>Formulaire de demande de congés</h1>
+  <form id="form-conges">
+    <label>Prénom :
+      <input type="text" id="prenom" />
+    </label><br /><br />
+    
+    <label>Nom :
+      <input type="text" id="nom" />
+    </label><br /><br />
+
+    <label>Email :
+      <input type="email" id="email" />
+    </label><br /><br />
+
+    <label>Date de début :
+      <input type="date" id="date-debut" />
+    </label><br /><br />
+
+    <label>Date de fin :
+      <input type="date" id="date-fin" />
+    </label><br /><br />
+
+    <label>Type de congé :
+      <select id="type-conge">
+        <option value="rtt">RTT</option>
+        <option value="cp">Congés Payés</option>
+        <option value="sans-solde">Sans solde</option>
+      </select>
+    </label><br /><br />
+
+    <label>
+      <input type="checkbox" id="certif" />
+      Je certifie l’exactitude des informations
+    </label><br /><br />
+
+    <button type="button" onclick="soumettre()">Valider</button>
+  </form>
+
+  <script>
+    function soumettre() {
+      const prenom = document.getElementById("prenom").value;
+      const nom = document.getElementById("nom").value;
+      const email = document.getElementById("email").value;
+      const dateDebut = document.getElementById("date-debut").value;
+      const dateFin = document.getElementById("date-fin").value;
+      const conge = document.getElementById("type-conge").value;
+      const certif = document.getElementById("certif").checked;
+
+      if (prenom && nom && email && dateDebut && dateFin && conge && certif) {
+        sessionStorage.setItem("dateDebut", dateDebut);
+        sessionStorage.setItem("dateFin", dateFin);
+        window.location.href = "confirmation.html";
+      } else {
+        alert("Merci de remplir tous les champs et de certifier.");
+      }
+    }
+  </script>
+</body>
+</html>

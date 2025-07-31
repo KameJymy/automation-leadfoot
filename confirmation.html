@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Confirmation</title>
+</head>
+<body>
+  <h1>Confirmation</h1>
+  <p id="confirmation-message" style="color: green; font-weight: bold;"></p>
+
+  <button onclick="retour()">Faire une autre demande</button>
+
+  <script>
+    const debut = sessionStorage.getItem("dateDebut");
+    const fin = sessionStorage.getItem("dateFin");
+    const msg = document.getElementById("confirmation-message");
+
+    if (debut && fin) {
+      msg.textContent = `Votre demande de congés du ${debut} au ${fin} a bien été enregistrée.`;
+    } else {
+      msg.textContent = "Aucune demande détectée.";
+    }
+
+    function retour() {
+      window.location.href = "page-demande.html";
+    }
+  </script>
+</body>
+</html>
