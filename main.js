@@ -1,5 +1,6 @@
 const {Server} = require("@theintern/leadfoot");
 const serveur = new Server("hhtp://localhost:50081");
+const fillForm = require("./fillForm");
 
 (async() =>{
     const session = await serveur.createSession({browserName:"chrome"});
@@ -13,6 +14,6 @@ const serveur = new Server("hhtp://localhost:50081");
     }
     finally
     {
-
+        await session.quit();
     }
 })();
