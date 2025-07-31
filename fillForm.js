@@ -1,4 +1,7 @@
 const selectors = require("./selectors");
+const Command = require('leadfoot/Command');
+const pollUntil = require('leadfoot/helpers/pollUntil');
+
 
 
 async function fillForm(session)
@@ -53,6 +56,12 @@ async function fillForm(session)
 
     const valider = await session.findByCssSelector(selectors.valider);
     await valider.click();
+
+    await new Command(session)
+        .then(pollUntil(function(){
+            const element = document.querySelector("#confirmation-message");
+            return element && window.getComputedStyle(element).display !== "none" ? true : null
+        ;}, [], 3000));
 }
 
 module.exports = fillForm;
